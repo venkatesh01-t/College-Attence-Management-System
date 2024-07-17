@@ -1,0 +1,18 @@
+<h1>
+    path('', views.login, name='login'),<br>
+     path('mainpage/', mainpage, name='principal_page'),<br>
+     path('home/', views.home, name='home'),<br>
+     path('mainpanal/', mainpanal, name='mainpanal'),<br>
+     path('view/<str:year>', view, name='view'),<br>
+     path('viewall/', viewpage, name='viewall'),<br>
+     path('studentlogin/', student_login, name='student_login'),<br>
+     path('student_view/<str:key>', student_view, name='student_view'),<br>
+     path('searchviewpage/', searchviewpage, name='searchviewpage'),<br>
+     path('attencemainpage/', reattence, name='attence_main_page'),<br>
+     path('attencetake/<str:year>', attences_take, name='attencetake'),<br>
+     path('student_details/<str:year>',create_details,name='student_details'),<br>
+     path('student_deleteug/<int:id>',create_deleteug,name='student_deleteug'),<br>
+     path('student_deletepg/<int:id>',create_deletepg,name='student_deletepg'),<br>
+     path('edit_student/<int:id>',edit_student,name='edit_student'),<br>
+     path('delete_student/<int:id>',delete_student,name='delete_student'),<br>
+</h1>

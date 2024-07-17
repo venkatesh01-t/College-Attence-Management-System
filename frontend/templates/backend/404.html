@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+        }
+        .error-number {
+            font-size: 120px;
+            font-weight: bold;
+        }
+        .error-message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .game-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #e9ecef;
+            overflow: hidden;
+        }
+        .balloon {
+            width: 50px;
+            height: 70px;
+            background-color: #ff6f61;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -70px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="error-number">404</div>
+                <div class="error-message">Oops! We can't seem to find the page you're looking for.</div>
+                <a href="/" class="btn btn-primary">Go Back Home</a>
+                <div class="game-container mt-4">
+                    <div class="balloon" id="balloon"></div>
+                </div>
+                <p class="mt-3">Click the balloon to score points!</p>
+                <p>Score: <span id="score">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const balloon = document.getElementById('balloon');
+            let score = 0;
+            
+            balloon.addEventListener('click', () => {
+                score++;
+                document.getElementById('score').textContent = score;
+                moveBalloon();
+            });
+
+            function moveBalloon() {
+                const gameContainer = document.querySelector('.game-container');
+                const maxWidth = gameContainer.clientWidth - balloon.clientWidth;
+                const maxHeight = gameContainer.clientHeight - balloon.clientHeight;
+                
+                const randomX = Math.floor(Math.random() * maxWidth);
+                const randomY = Math.floor(Math.random() * maxHeight);
+                
+                balloon.style.left = `${randomX}px`;
+                balloon.style.top = `${randomY}px`;
+            }
+
+            moveBalloon();
+        });
+    </script>
+</body>
+</html>

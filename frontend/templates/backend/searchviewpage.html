@@ -1,0 +1,129 @@
+<!-- {% for sublist in data %}
+    {{sublist.name}}<br>
+    {{sublist.daypresent}}
+          <br>
+          {{sublist.regnumber}}
+          <br>
+          {{sublist.greade}}
+          <br>
+          {% for i in sublist.date %}
+          {{i}}
+          {% endfor %}<br>
+          {% for i in sublist.dayorder %}
+          {{i}}
+          {% endfor %}<br>
+          {% for i in sublist.days%}
+              {% for a in i%}
+              
+                {% for b in a%}
+                         {{b}}
+                {%endfor%}
+              {%endfor%}
+            <br>
+          {%endfor%}
+          <br>
+{% endfor %} -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sourashtra College Attendance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .custom-table thead th, .custom-table tbody td {
+            text-align: center;
+            padding: 10px;
+            
+        }
+        
+        .print-button {
+            margin-bottom: 20px;
+        }
+        
+        @media print {
+            .print-button{
+                display: none;
+                margin-top: 20px;
+                cursor: pointer;
+                background-color: blue;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                text-decoration: none;
+                margin-left: 10px;
+                transition: background-color 0.3s ease;
+                
+            }
+        .custom-table {
+            font-size: 20px;
+        }
+        
+    }
+    </style>
+</head>
+<button class="btn btn-primary print-button" onclick="window.print()">Print</button>
+<body>
+  {% for sublist in data %}
+    <div class="container ">
+        
+        <h2 class="text-center">Sourashtra College</h2>
+ 
+        <div class="row">
+          <div class="col-6 text-left">
+            <label>Name:{{sublist.name}}</label><br>
+            <label>Department:{{sublist.dep}}</label>
+          </div>
+          <div class="col-6 text-right">
+            <label>Reg No: {{sublist.regnumber}}</label><br>
+            <label>Percentage:{{sublist.daypresent}}%/{{sublist.greade}}</label>
+          </div>
+       
+  </div><br><br>
+        <div class="table-responsive">
+            <table class="table table-bordered custom-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Date</th>
+                        <th>Day Order</th>
+                        <th>H1</th>
+                        <th>H2</th>
+                        <th>H3</th>
+                        <th>H4</th>
+                        <th>H5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for row in sublist.combined_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        {% for i in row %}
+                                <td>{{ i }}</td>
+                            {% endfor %} 
+                    </tr>
+                            {% endfor %}
+                       
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    {% endfor %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+
+
+

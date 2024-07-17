@@ -1,0 +1,132 @@
+{% extends 'backend/head.html' %}
+{%load static %}
+{%block active%}
+<div class="navbar-nav w-100">
+    <a href="/viewall/" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>view</a>
+    <!-- <a href="/backend/tablet/" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tablets</a>
+    <a href="/backend/searchall/" class="nav-item nav-link"><i class="fa fa-th me-2"></i>All DATAs</a>
+    <div class="nav-item dropdown">
+        <a href="/backend/index" class="nav-link dropdown-toggle"  data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
+        <div class="dropdown-menu bg-transparent border-0">
+            <a href="/button" class="dropdown-item">Buttons</a>
+            <a href="/typography" class="dropdown-item">Typography</a>
+            <a href="/element" class="dropdown-item">Other Elements</a>
+        </div>
+    </div>
+    <a href="/backend/opp/" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Appointment</a>
+    
+    <a href="/chart" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+        <div class="dropdown-menu bg-transparent border-0">
+            <a href="/signin" class="dropdown-item">Sign In</a>
+            <a href="/signup" class="dropdown-item">Sign Up</a>
+            <a href="/404" class="dropdown-item">404 Error</a>
+            <a href="/blank" class="dropdown-item">Blank Page</a>
+        </div>
+    </div> -->
+</div>
+{% endblock%}
+{% block main %}
+<style>
+    .classic-button {
+  background-color: #42fbe5; /* light gray background */
+  border: 1px solid #17fff7; /* light gray border */
+  border-radius: 10px; /* slight rounded corners */
+  padding: 5px 10px; /* add some padding */
+  font-size: 16px; /* increase font size */
+  font-weight: bold; /* make the text bold */
+  cursor: pointer; /* change the cursor to a pointing hand */
+}
+.scroll-box {
+  overflow-y: auto; /* Add a vertical scrollbar */
+  height: 200px; /* Set the height of the scroll box */
+  padding: 10px; /* Add some padding */
+  border: 1px solid #ccc; /* Add a border */
+}
+</style>
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-center mb-4">
+            <h1 class='text-center'>day {{day}}--{{order}} Day Order--{{date}}</h1>
+          </div>
+    </div>
+</div>
+
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-secondary text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Undergraduate (UG)</h6>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                          
+            <thead>
+                <tr>
+                    <th>department</th>
+                    <th>1_year</th>
+                    <th>2_year</th>
+                    <th>3_year</th>
+                    
+                </tr>
+        
+            </thead>
+            <tbody>
+                {%for i in ug%}
+                <tr>
+                    
+        
+            <td>{{i.department}}</td>
+            <td>  <a href="{% url 'view' i.year1 %}">{{i.year1}}</a></td>
+            <td>  <a href="{% url 'view' i.year2 %}">{{i.year2}}</a></td>
+            <td>  <a href="{% url 'view' i.year3 %}">{{i.year3}}</a></td>
+           
+        
+                    
+                </tr>
+                {%endfor%}
+            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-secondary text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Postgraduate (PG)</h6>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                          
+            <thead>
+                <tr>
+                    <th>department</th>
+                    <th>1_year</th>
+                    <th>2_year</th>
+                    
+                </tr>
+        
+            </thead>
+            <tbody>
+                {%for i in pg%}
+                <tr>
+                    
+        
+            <td>{{i.department}}</td>
+            <td>  <a href="{% url 'view' i.year1 %}">{{i.year1}}</a></td>
+            <td>  <a href="{% url 'view' i.year2 %}">{{i.year2}}</a></td>
+           
+        
+                    
+                </tr>
+                {%endfor%}
+            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+{%endblock%}
